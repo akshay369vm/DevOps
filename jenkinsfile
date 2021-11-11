@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    tools {
+        // maven stage
+        maven "Maven"
+    }
+    stages{
+	 
+	  stage(test){
+	    steps{
+		 sh '''mvn clean test -Dmaven.test.failure.ignore=true'''
+		 }
+		}
+      stage(build){
+	    steps{
+		 sh '''mvn clean install -Dmaven.test.failure.ignore=true'''
+		 }
+		}
+      stage(deploy){
+           steps{
+                sh '''mvn clean deploy -Dmaven.test.failure.ignore=true'''
+               }
+             }
+     }
+}	
+	  

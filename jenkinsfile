@@ -19,7 +19,7 @@ pipeline {
       stage(deploy){
            steps{
                 sh '''mvn clean deploy -Dmaven.test.failure.ignore=true'''
-		sh 'echo hello'
+		sh 'echo hello1'
                }
              }
      }
